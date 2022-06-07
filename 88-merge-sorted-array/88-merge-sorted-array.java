@@ -13,7 +13,7 @@ class Solution {
         }
         else{
         while(a<nums1.length && b<n){
-            if(nums1[a]>nums2[b] || (nums2[b]==0 && nums1[a]==nums2[b]) || (nums1[a]==0 && a>=m)){
+            if(nums1[a]>nums2[b] || (nums1[a]==0 && a>=m)){
                 nums1[m]=nums1[m-1];
                 for(int i=m-1;i>a;i--){
                     nums1[i]=nums1[i-1];
