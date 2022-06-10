@@ -16,7 +16,6 @@ class Solution {
                 s1=s1+Character.toString(s.charAt(i));
                 count+=1;
             }
-            System.out.println(count);
             if(max<count){
                 max=count;
 }
