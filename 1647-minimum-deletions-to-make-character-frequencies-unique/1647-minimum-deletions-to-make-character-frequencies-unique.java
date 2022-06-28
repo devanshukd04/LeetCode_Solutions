@@ -4,7 +4,6 @@ class Solution {
     public int minDeletions(String s) {
         int[] a=new int[26];
         int c;
-        int d;
         int sum=0;
         for(int i=0;i<s.length();i++){
             c=s.charAt(i)-97;
@@ -16,13 +15,11 @@ class Solution {
             a[i]=a[a.length-1-i];
             a[a.length-1-i]=temp;
         }
-        int[] b=new int[a[0]];
         int f=a[0]-1;
         for(int i=0;i<a.length && a[i]>0;i++){
             if(a[i]-1<f){
                 f=a[i]-1;
             }
-            b[f]=1;
             sum+=a[i]-1-f;
             f--;
             if(f==-1){
