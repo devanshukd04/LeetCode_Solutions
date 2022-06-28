@@ -17,30 +17,21 @@ class Solution {
             a[a.length-1-i]=temp;
         }
         int[] b=new int[a[0]];
+        int f=a[0]-1;
         for(int i=0;i<a.length && a[i]>0;i++){
-            if(b[a[i]-1]==0){
-                b[a[i]-1]=1;
+            if(a[i]-1<f){
+                f=a[i]-1;
             }
-            else{
-                boolean flag=false;
-                int e=a[i]-1;
-                while(e>=0){
-                    if(b[e]==0){
-                        sum+=a[i]-1-e;
-                        b[e]=1;
-                        flag=true;
-                        break;
-                    }
-                    e--;
+            b[f]=1;
+            sum+=a[i]-1-f;
+            f--;
+            if(f==-1){
+                int e=i+1;
+                while(e<a.length && a[e]>0){
+                    sum+=a[e];
+                    e++;
                 }
-                if(!flag){
-                    int f=i;
-                    while(f<a.length && a[f]>0){
-                        sum+=a[f];
-                        f++;
-                    }
-                    return sum;
-                }
+                return sum;
             }
         }
         return sum;
