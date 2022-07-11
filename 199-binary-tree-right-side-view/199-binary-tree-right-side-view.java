@@ -21,9 +21,11 @@ class Solution {
         b.add(null);
         List<Integer> c=new ArrayList<Integer>();
         while(b.peek()!=null){
+            TreeNode f=null;
             List<Integer> d=new ArrayList<Integer>();
             while(b.peek()!=null){
                 TreeNode e=b.remove();
+                f=e;
                 d.add(e.val);
                 if(e.left!=null){
                     b.add(e.left);
@@ -32,18 +34,14 @@ class Solution {
                     b.add(e.right);
                 }
             }
+            if(f!=null){
+                c.add(f.val);   
+            }
             b.remove();
             a.add(d);
             b.add(null);
         }
-        for(int i=0;i<a.size();i++){
-            if(a.get(i).size()>0){
-                int f=a.get(i).size();
-                c.add(a.get(i).get(f-1));
-            }
-        }
         
-        System.out.println(a);
         return c;
     }
 }
