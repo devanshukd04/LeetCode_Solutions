@@ -3,33 +3,20 @@ class Solution {
         if(nums.length==1){
             return true;
         }
-        int i=0;
-        boolean flag=false;
-        boolean flag1=false;
-        while(i<nums.length-1){
-            if(!flag){
-                if(nums[i]>nums[i+1]){
-                    flag1=true;
-                    flag=true;
-                }
-                else if(nums[i]<nums[i+1]){
-                    flag1=false;
-                    flag=true;
-                }
+        boolean flag=true;
+        boolean flag1=true;
+        for(int i=0;i<nums.length-1;i++){
+            if(nums[i]<nums[i+1]){
+                flag=false;
+                break;
             }
-            else{
-                if(flag1 && nums[i]>=nums[i+1]){
-                    flag1=true;
-                }
-                else if(!flag1 && nums[i]<=nums[i+1]){
-                    flag1=false;
-                }
-                else{
-                    return false;
-                }
-            }
-            i++;
         }
-        return true;
+        for(int i=0;i<nums.length-1;i++){
+            if(nums[i]>nums[i+1]){
+                flag1=false;
+                break;
+            }
+        }  
+        return flag || flag1;
     }
 }
