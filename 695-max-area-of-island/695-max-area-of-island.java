@@ -23,7 +23,6 @@ class Solution {
         }
         check[i][j]=true;
         ++max;
-        System.out.println(i+" "+j);
         adjoiningArea(grid,i+1,j);
         adjoiningArea(grid,i-1,j);
         adjoiningArea(grid,i,j+1);
