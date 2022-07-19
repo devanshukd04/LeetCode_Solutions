@@ -12,25 +12,24 @@ class Solution {
             ans+=1L*b*b;
             max=max<b?b:max;
         }
-        int j=max;
         int total=k1+k2;
-        while(total>0 && j>0){
-            if(map.getOrDefault(j,0)>0){
-                int count=map.get(j);
+        while(total>0 && max>0){
+            if(map.getOrDefault(max,0)>0){
+                int count=map.get(max);
                 if(total>=count){
-                    ans-=1L*count*((j*j)-((j-1)*(j-1)));
-                    map.remove(j);
-                    map.put(j-1,map.getOrDefault(j-1,0)+count);
+                    ans-=1L*count*((max*max)-((max-1)*(max-1)));
+                    map.remove(max);
+                    map.put(max-1,map.getOrDefault(max-1,0)+count);
                     total-=count;
                 }
                 else{
-                    ans-=1L*total*((j*j)-((j-1)*(j-1)));
-                    map.put(j-1,map.getOrDefault(j,0)-total);
-                    map.put(j-1,map.getOrDefault(j-1,0)+total);
+                    ans-=1L*total*((max*max)-((max-1)*(max-1)));
+                    map.put(max-1,map.getOrDefault(max,0)-total);
+                    map.put(max-1,map.getOrDefault(max-1,0)+total);
                     return ans;
                 }
             }
-            j--;
+            max--;
         }
         return ans;
     }
