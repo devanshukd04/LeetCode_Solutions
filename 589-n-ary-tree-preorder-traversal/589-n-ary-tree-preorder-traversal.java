@@ -23,14 +23,11 @@ class Solution {
         if(root==null){
             return list;
         }
-        preorderTree(root);
-        return list;
-    }
-    public void preorderTree(Node root){
         List<Node> child=root.children;
         list.add(root.val);
         for(Node leaf:child){
-            preorderTree(leaf);
+            preorder(leaf);
         }
+        return list;
     }
 }
