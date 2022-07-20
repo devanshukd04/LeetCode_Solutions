@@ -1,52 +1,27 @@
 class Solution {
     public int numMatchingSubseq(String s, String[] words) {
-        boolean flag;
         int count=0;
-        HashMap<Character,List<Integer>> map=new HashMap<Character,List<Integer>>();
-        for(int i=0;i<s.length();i++){
-            if(map.containsKey(s.charAt(i))){
-                List<Integer> list=map.get(s.charAt(i));
-                list.add(i);
-                map.put(s.charAt(i),list);
-            }
-            else{
-                List<Integer> list=new ArrayList<Integer>();
-                list.add(i);
-                map.put(s.charAt(i),list);
-            }
+        HashMap<String,Integer> map=new HashMap<String,Integer>();
+        for(String w:words){
+            map.put(w,map.getOrDefault(w,0)+1);
         }
-        for(int i=0;i<words.length;i++){
-            String w=words[i];
+        char[] schar=s.toCharArray();
+        for(String w:map.keySet()){
+            char[] wchar=w.toCharArray();
+            int i=0;
             int j=0;
-            String s1=s;
-            flag=true;
-            int index=-1;
-            while(j<w.length()){
-                if(map.containsKey(w.charAt(j))){
-                    List<Integer> list=map.get(w.charAt(j));
-                    for(int num:list){
-                        if(index<num){
-                            index=num;
-                            flag=true;
-                            break;
-                        }
-                        else{
-                            flag=false;
-                        }
-                    }
-                    if(!flag){
-                      break;  
-                    }
+            while(i<schar.length && j<wchar.length){
+                if(schar[i]==wchar[j]){
+                    i++;
+                    j++;
                 }
                 else{
-                    flag=false;
-                    break;
+                    i++;
                 }
-                ++j;
             }
-            if(flag){
-                ++count;
-            }  
+            if(j==wchar.length){
+                count+=map.get(w);
+            }
         }
         return count;
     }
