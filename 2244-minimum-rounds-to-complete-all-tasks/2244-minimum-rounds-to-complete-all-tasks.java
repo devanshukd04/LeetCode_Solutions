@@ -1,18 +1,16 @@
 class Solution {
     public int minimumRounds(int[] tasks) {
         HashMap<Integer,Integer> map=new HashMap<Integer,Integer>();
-        List<Integer> list=new ArrayList<Integer>();
         for(int num:tasks){
             if(map.containsKey(num)){
                 map.put(num,map.getOrDefault(num,0)+1);
             }
             else{
                 map.put(num,1);
-                list.add(num);
             }
         }
         int count=0;
-        for(int num:list){
+        for(int num:map.keySet()){
             int freq=map.get(num);
             if(freq<2){
                 return -1;
