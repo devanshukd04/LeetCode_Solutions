@@ -12,8 +12,14 @@ class FoodRatings {
             }
             else{
                 maxRating.put(cuisines[i],new TreeSet<String>((s1,s2)->
-                    foodRate.get(s1).equals(foodRate.get(s2))?s1.compareTo(s2):foodRate.get(s2)-foodRate.get(s1))
-                );
+                {
+                    if(foodRate.get(s1).equals(foodRate.get(s2))){
+                        return s1.compareTo(s2);
+                    }
+                    else{
+                        return foodRate.get(s2)-foodRate.get(s1);
+                    }
+                }));         
                 maxRating.get(cuisines[i]).add(foods[i]);
             }
         }
