@@ -10,11 +10,7 @@ class Solution {
                 b++;
             }
             else{
-                int count=0;
-                if(map.containsKey(ch)){
-                    count=map.get(ch);
-                }
-                map.put(ch,count+1);
+                map.put(ch,map.getOrDefault(ch,0)+1);
                 list.add(guess.charAt(i)-'0');
             }
         }
