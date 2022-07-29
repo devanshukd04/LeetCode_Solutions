@@ -1,21 +1,22 @@
 class Solution {
     public boolean isHappy(int n) {
-        HashSet<Integer> set=new HashSet<Integer>();
-        while(n!=1){
-            int sum=0;
-            if(set.contains(n)){
-                break;
+        int slowPointer=getNext(n);
+        int fastPointer=getNext(getNext(n));
+        while(slowPointer!=1 || fastPointer!=1){
+            if(slowPointer==fastPointer){
+                return false;
             }
-            set.add(n);
-            while(n>0){
-                sum+=(n%10)*(n%10);
-                n/=10;
-            }
-            n=sum;
+            slowPointer=getNext(slowPointer);
+            fastPointer=getNext(getNext(fastPointer));
         }
-        if(n==1){
-            return true;
+        return true;
+    }
+    public int getNext(int n){
+        int sum=0;
+        while(n>0){
+            sum+=(n%10)*(n%10);
+            n/=10;
         }
-        return false;
+        return sum;
     }
 }
