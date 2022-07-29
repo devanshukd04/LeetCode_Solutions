@@ -2,7 +2,6 @@ class Solution {
     public List<String> findAndReplacePattern(String[] words, String pattern) {
         List<String> list=new ArrayList<String>();
         for(String word:words){
-            System.out.println(word);
             HashMap<Character,Character> map=new HashMap<Character,Character>();
             boolean flag=true;
             if(word.length()==pattern.length()){
