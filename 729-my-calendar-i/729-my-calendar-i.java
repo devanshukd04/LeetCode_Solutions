@@ -1,28 +1,16 @@
 class MyCalendar {
-    HashMap<Integer,Integer> map;
-    PriorityQueue<Integer> queue;
+    List<int[]> list;
     public MyCalendar() {
-        map=new HashMap<Integer,Integer>();
-        queue=new PriorityQueue<Integer>();
+        list=new ArrayList();
     }
     
     public boolean book(int start, int end) {
-        List<Integer> list=new ArrayList<Integer>();
-        while(!queue.isEmpty()){
-            int oldstart=queue.poll();
-            list.add(oldstart);
-            if(oldstart<end && start<map.get(oldstart)){
-                for(int num:list){
-                    queue.add(num);
-                }
+        for(int[] arr:list){
+            if(arr[0]<end && arr[1]>start){
                 return false;
             }
         }
-        for(int num:list){
-            queue.add(num);
-        }
-        map.put(start,end);
-        queue.add(start);
+        list.add(new int[]{start,end});
         return true;
     }
 }
