@@ -5,11 +5,8 @@ class Solution {
         return helper(nums,0,dp);
     }
     public int helper(int[] nums,int i,int[] dp){
-        if(i==nums.length-1){
+        if(i>=nums.length-1){
             return 0;
-        }
-        if(i>nums.length-1){
-            return (int)1e4+1;
         }
         if(dp[i]!=(int)1e4+1){
             return dp[i];
