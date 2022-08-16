@@ -6,7 +6,7 @@ class Solution {
         for(int i=0;i<isConnected.length;i++){
             List<Integer> list=new ArrayList<Integer>();
             for(int j=0;j<isConnected[0].length;j++){
-                if(isConnected[i][j]==1){
+                if(isConnected[i][j]==1 && i!=j){
                     list.add(j);
                 }
             }
