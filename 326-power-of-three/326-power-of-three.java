@@ -3,12 +3,12 @@ class Solution {
         if(n<=0){
             return false;
         }
-        while(n>1){
-            if(n%3!=0){
-                return false;
-            }
-            n/=3;
+        if(n==1){
+            return true;
         }
-        return true;
+        if(n%3!=0){
+            return false;
+        }
+        return isPowerOfThree(n/3);
     }
 }
