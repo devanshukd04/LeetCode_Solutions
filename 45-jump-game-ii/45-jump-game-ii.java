@@ -6,12 +6,7 @@ class Solution {
         for(int i=0;i<nums.length;i++){
             if(dp[i]!=-1){
                 for(int j=i+1;j<=i+nums[i] && j<nums.length;j++){
-                    if(dp[j]!=-1){
-                        dp[j]=Math.min(dp[j],dp[i]+1);   
-                    }
-                    else{
-                        dp[j]=dp[i]+1;
-                    }
+                    dp[j]=dp[j]!=-1?Math.min(dp[j],dp[i]+1):dp[i]+1;
                 }
             }
         }
