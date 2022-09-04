@@ -29,9 +29,7 @@ class Solution {
         else{
             return matrix[i][j];
         }
-        int d=matrix[i][j]+Math.min(a,Math.min(b,c));
-        dp[i][j]=d;
         visited[i][j]=1;
-        return d;
+        return dp[i][j]=matrix[i][j]+Math.min(a,Math.min(b,c));
     }
 }
