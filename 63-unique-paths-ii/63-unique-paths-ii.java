@@ -70,3 +70,34 @@ class Solution {
         return a2;
     }
 }
+
+// Simple Solution
+// class Solution {
+//     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+//         if(obstacleGrid[obstacleGrid.length-1][obstacleGrid[0].length-1]==1){
+//             return 0;
+//         }
+//         int[][] dp=new int[obstacleGrid.length][obstacleGrid[0].length];
+//         for(int i=0;i<obstacleGrid.length;i++){
+//             Arrays.fill(dp[i],-1);
+//         }
+//         return helper(obstacleGrid,dp,0,0);
+//     }
+//     public int helper(int[][] obstacleGrid,int[][] dp,int i,int j){
+//         if(i==obstacleGrid.length-1 && j==obstacleGrid[0].length-1){
+//             return 1;
+//         }
+//         if(i>=obstacleGrid.length || j>=obstacleGrid[0].length){
+//             return 0;
+//         }
+//         if(obstacleGrid[i][j]==1){
+//             return 0;
+//         }
+//         if(dp[i][j]!=-1){
+//             return dp[i][j];
+//         }
+//         int a=helper(obstacleGrid,dp,i+1,j);
+//         int b=helper(obstacleGrid,dp,i,j+1);
+//         return dp[i][j]=a+b;
+//     }
+// }
