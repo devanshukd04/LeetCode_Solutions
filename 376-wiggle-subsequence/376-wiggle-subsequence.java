@@ -34,3 +34,41 @@ class Solution {
         return sum;
     }
 }
+
+//Memoization
+// class Solution {
+//     public int wiggleMaxLength(int[] nums) {
+//         int ans=0;
+//         int[][] dp=new int[nums.length][nums.length+1];
+//         for(int[] arr:dp){
+//             Arrays.fill(arr,-1);
+//         }
+//         for(int i=0;i<nums.length;i++){
+//             int res=helper(nums,dp,i,0);
+//             ans=Math.max(ans,res);
+//         }
+//         return ans+1;
+//     }
+//     public int helper(int[] nums,int[][] dp,int i,int prev){
+//         if(i==nums.length-1){
+//             return 0;
+//         }
+//         if(dp[i][prev+1]!=-1){
+//             return dp[i][prev+1];
+//         }
+//         if(prev==0){
+//             if(nums[i+1]-nums[i]==0){
+//                 return 0;
+//             }
+//             prev=nums[i+1]-nums[i]>0?-1:1;
+//             return dp[i][prev+1]=1+helper(nums,dp,i+1,prev);
+//         }
+//         else if(prev==-1 && nums[i+1]-nums[i]<0){
+//             return dp[i][prev+1]=1+helper(nums,dp,i+1,1);
+//         }
+//         else if(prev==1 && nums[i+1]-nums[i]>0){
+//             return dp[i][prev+1]=1+helper(nums,dp,i+1,-1);
+//         }
+//         return dp[i][prev+1]=helper(nums,dp,i+1,prev);
+//     }
+// }
