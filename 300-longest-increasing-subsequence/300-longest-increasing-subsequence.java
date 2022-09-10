@@ -22,7 +22,7 @@ class Solution {
     }
 }
 
-
+//Optimized Approach
 // class Solution {
 //     public int lengthOfLIS(int[] nums) {
 //         int[] dp=new int[nums.length];
