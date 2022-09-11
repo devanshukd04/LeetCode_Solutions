@@ -5,8 +5,7 @@ class Solution {
         for(int[] arr:dp){
             Arrays.fill(arr,-1);
         }
-        int ans=helper(amount,coins,dp,coins.length-1);
-        return ans;
+        return helper(amount,coins,dp,coins.length-1);
     }
     public int helper(int amount,int[] coins,int[][] dp,int i){
         if(amount==0){
