@@ -19,7 +19,6 @@ class Solution {
         if(word1.charAt(i)==word2.charAt(j)){
             return dp[i][j]=helper(word1,word2,dp,i-1,j-1);
         }
-        dp[i][j]=1+Math.min(helper(word1,word2,dp,i,j-1),Math.min(helper(word1,word2,dp,i-1,j),helper(word1,word2,dp,i-1,j-1)));
-        return dp[i][j];
+        return dp[i][j]=1+Math.min(helper(word1,word2,dp,i,j-1),Math.min(helper(word1,word2,dp,i-1,j),helper(word1,word2,dp,i-1,j-1)));
     }
 }
