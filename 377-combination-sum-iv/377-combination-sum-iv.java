@@ -15,7 +15,9 @@ class Solution {
         }
         int ans=0;
         for(int i=0;i<nums.length;i++){
-            ans+=recurse(nums,remain-nums[i],memo);
+            if(remain-nums[i]>=0){
+                ans+=recurse(nums,remain-nums[i],memo);   
+            }
         }
         memo[remain]=ans;
         return memo[remain];
