@@ -12,14 +12,12 @@ class Solution {
                 score+=1;
             }
             else{
-                if(score>=1){
-                    power+=tokens[j];
-                    j--;
-                    score-=1;
+                if(score<1){
+                    return ans;
                 }
-                else{
-                    return score;
-                }
+                power+=tokens[j];
+                j--;
+                score-=1;
             }
             ans=Math.max(ans,score);
         }
