@@ -2,8 +2,18 @@ class Solution {
     public int combinationSum4(int[] nums, int target) {
         Arrays.sort(nums);
         int[] dp=new int[target+1];
-        Arrays.fill(dp,-1);
-        return helper(nums,dp,target);
+        dp[0]=1;
+        for(int i=1;i<=target;i++){
+            for(int j=0;j<nums.length;j++){
+                if(nums[j]<=i){
+                    dp[i]+=dp[i-nums[j]];
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        return dp[target];
     }
     public int helper(int[] nums,int[] dp,int target){
         if(target==0){
