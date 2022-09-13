@@ -38,7 +38,7 @@ class Solution {
                 a=counter==0?-1:1;
             }
         }
-        if(a!=-1 || counter!=0){
+        if(a!=-1){
             return false;
         }
         return true;
