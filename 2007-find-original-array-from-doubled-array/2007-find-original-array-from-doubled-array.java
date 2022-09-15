@@ -8,6 +8,9 @@ class Solution {
         int[] ans=new int[changed.length/2];
         int[] visited=new int[changed.length];
         for(int i=0;i<changed.length;i++){
+            if(j==changed.length){
+                return changed;
+            }
             if(visited[i]!=1){
                 int index=binarySearch(changed,visited,i,changed[i]*2);
                 if(index==-1){
