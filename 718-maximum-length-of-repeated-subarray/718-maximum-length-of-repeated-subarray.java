@@ -1,9 +1,17 @@
 class Solution {
     int max=0;
     public int findLength(int[] nums1, int[] nums2) {
-        Integer[][] dp=new Integer[nums1.length][nums2.length];
-        helper(nums1,nums2,dp,0,0);
-        return max;
+        int[][] dp=new int[nums1.length+1][nums2.length+1];
+        int ans=0;
+        for(int i=nums1.length-1;i>=0;i--){
+            for(int j=nums2.length-1;j>=0;j--){
+                if(nums1[i]==nums2[j]){
+                    dp[i][j]=1+dp[i+1][j+1];
+                }
+                ans=Math.max(ans,dp[i][j]);
+            }
+        }
+        return ans;
     }
     public int helper(int[] nums1,int[] nums2,Integer[][] dp,int i,int j){
         if(i>=nums1.length || j>=nums2.length){
