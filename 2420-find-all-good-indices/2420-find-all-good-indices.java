@@ -41,4 +41,20 @@ class Solution {
         }
         return ans;
     }
+    public boolean helper1(int[] nums,int start,int end){
+        for(int i=start;i<end;i++){
+            if(nums[i]-nums[i+1]<0){
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean helper2(int[] nums,int start,int end){
+        for(int i=start;i<end;i++){
+            if(nums[i]-nums[i+1]>0){
+                return false;
+            }
+        }
+        return true;
+    }
 }
