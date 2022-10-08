@@ -1,20 +1,19 @@
 class LUPrefix {
-    TreeSet<Integer> set;
-    int n;
+    HashSet<Integer> set;
+    int max=0;
     public LUPrefix(int n) {
-        set=new TreeSet<Integer>();
-        for(int i=1;i<=n;i++){
-            this.set.add(i);
-        }
-        this.n=n;
+        set=new HashSet<Integer>();
     }
     
     public void upload(int video) {
-        this.set.remove(video);
+        this.set.add(video);
+        while(this.set.contains(this.max+1)){
+            this.max++;
+        }
     }
     
     public int longest() {
-        return this.set.isEmpty()?this.n:this.set.first()-1;
+        return this.max;
     }
 }
 
