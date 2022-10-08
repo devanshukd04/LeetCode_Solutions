@@ -6,7 +6,6 @@ class LUPrefix {
         for(int i=1;i<=n;i++){
             this.set.add(i);
         }
-        System.out.println(this.set);
         this.n=n;
     }
     
