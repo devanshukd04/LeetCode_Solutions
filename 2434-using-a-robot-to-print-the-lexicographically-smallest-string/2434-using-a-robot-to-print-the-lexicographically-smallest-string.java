@@ -9,10 +9,6 @@ class Solution {
             set.add(s.charAt(i)-'a');
             map.put(s.charAt(i)-'a',map.getOrDefault(s.charAt(i)-'a',0)+1);
         }
-        if(set.size()==1){
-            return s;
-        }
-       
         while(true){
             if(s1.length()>0){
                 t.append(s1.charAt(0));
