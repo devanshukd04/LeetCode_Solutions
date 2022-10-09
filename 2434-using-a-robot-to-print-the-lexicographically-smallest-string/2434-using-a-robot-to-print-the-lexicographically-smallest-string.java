@@ -12,18 +12,7 @@ class Solution {
         if(set.size()==1){
             return s;
         }
-        if(s.length()>=(int)(100000)){
-            if(s.charAt(0)=='b'){
-                ans.append(s.substring(1,s.length()-1));
-                ans.insert(0,"a");
-                ans.append("b");
-                return ans.toString();
-            }
-            ans.append(s.substring(1,s.length()-1));
-            ans.insert(0,"a");
-            ans.insert(0,"a");
-            return ans.toString();
-        }
+       
         while(true){
             if(s1.length()>0){
                 t.append(s1.charAt(0));
