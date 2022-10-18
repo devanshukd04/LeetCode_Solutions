@@ -7,7 +7,7 @@ class Solution {
             return "1";
         }
         String s=countAndSay(n-1);
-        String ans="";
+        StringBuffer ans=new StringBuffer();
         for(int i=0;i<s.length();i++){
             int freq=1;
             char ch=s.charAt(i);
@@ -16,9 +16,10 @@ class Solution {
                 i++;
                 freq++;
             }
-            ans=ans+freq+""+ch;
+            ans.append(freq);
+            ans.append(ch);
             i--;
         }
-        return ans;
+        return ans.toString();
     }
 }
