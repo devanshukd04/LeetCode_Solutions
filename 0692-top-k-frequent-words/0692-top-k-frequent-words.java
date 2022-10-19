@@ -3,13 +3,7 @@ class Solution {
         HashMap<String,Integer> map=new HashMap<String,Integer>();
         List<String> result=new ArrayList<String>();
         for(int i=0;i<words.length;i++){
-            if(map.containsKey(words[i])){
-                int freq=map.get(words[i]);
-                map.put(words[i],freq+1);
-            }
-            else{
-                map.put(words[i],1);
-            }
+            map.put(words[i],map.getOrDefault(words[i],0)+1);
         }
         List<String> list=new ArrayList(map.keySet());
         Collections.sort(list,(word1,word2)->{
