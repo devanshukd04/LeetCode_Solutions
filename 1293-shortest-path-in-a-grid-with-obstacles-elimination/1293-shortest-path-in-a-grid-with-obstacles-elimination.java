@@ -33,7 +33,6 @@ class Solution {
         minWays=Math.min(minWays,helper(grid,i-1,j,k,dp));
         minWays=Math.min(minWays,helper(grid,i,j-1,k,dp));
         grid[i][j]=oldValue;
-        minWays=minWays==Integer.MAX_VALUE?minWays:minWays+1;
-        return dp[i][j][k]=minWays;
+        return dp[i][j][k]=minWays==Integer.MAX_VALUE?minWays:minWays+1;
     }
 }
