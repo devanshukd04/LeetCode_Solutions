@@ -14,7 +14,7 @@ class Solution {
                 column++;
             }
         }
-        for(int i=matrix.length-1;i>=0;i--){
+        for(int i=matrix.length-1;i>0;i--){
             int row=i;
             int column=0;
             int value=matrix[row][column];
