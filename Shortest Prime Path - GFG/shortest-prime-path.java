@@ -30,10 +30,8 @@ class Solution
         // Complete this function using prime array
         int[] ans=new int[10000];
         Arrays.fill(ans,-1);
-        boolean[] visited=new boolean[10000];
         Queue<Integer> queue=new LinkedList<Integer>();
         queue.add(Num1);
-        visited[Num1]=false;
         ans[Num1]=0;
         int[] power=new int[4];
         power[3]=1000;
@@ -42,8 +40,6 @@ class Solution
         }
         while(!queue.isEmpty()){
             int num=queue.poll();
-            if(visited[num])continue;
-            visited[num]=true;
             for(int i=0;i<4;i++){
                 int pow=power[3-i];
                 int digit=(num/pow)%10;
