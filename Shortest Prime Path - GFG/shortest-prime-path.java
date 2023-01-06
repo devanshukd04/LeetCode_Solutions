@@ -43,6 +43,7 @@ class Solution
         while(!queue.isEmpty()){
             int num=queue.poll();
             if(visited[num])continue;
+            visited[num]=true;
             for(int i=0;i<4;i++){
                 int pow=power[3-i];
                 int digit=(num/pow)%10;
