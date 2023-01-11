@@ -39,29 +39,12 @@ class Solution {
     public long minIncrements(int[] arr, int N) {
         // Code here
         Arrays.sort(arr);
-        HashSet<Integer> set=new HashSet<Integer>();
-        List<Integer> list=new ArrayList<Integer>();
-        int index=0;
-        int prev=arr[0]+1;
         long ans=0;
-        for(int i=0;i<N;i++){
-            if(set.contains(arr[i])){
-                list.add(arr[i]);
+        for(int i=0;i<N-1;i++){
+            if(arr[i+1]<=arr[i]){
+                ans+=arr[i]-arr[i+1]+1;
+                arr[i+1]=arr[i]+1;
             }
-            else{
-                set.add(arr[i]);   
-            }
-            while(index<list.size() && prev<arr[i]){
-                ans+=(prev-list.get(index));
-                index++;
-                prev++;
-            }
-            prev=arr[i]+1;
-        }
-        while(index<list.size()){
-            ans+=(prev-list.get(index));
-            index++;
-            prev++;
         }
         return ans;
     }
