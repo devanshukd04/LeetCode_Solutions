@@ -31,32 +31,18 @@ class Geeks
 class Solution{
     int carpetBox(int A, int B, int C, int D) { 
         //code here
-        int a1=0;
-        int a2=0;
-        int b1=0;
-        int b2=0;
-        int temp;
-        temp=A;
-        while(temp>C){
-            temp>>=1;
-            a1++;
-        }
-        temp=A;
-        while(temp>D){
-            temp>>=1;
-            a2++;
-        }
-        temp=B;
-        while(temp>C){
-            temp>>=1;
-            b1++;
-        }
-        temp=B;
-        while(temp>D){
-            temp>>=1;
-            b2++;
-        }
+        int a1=binaryShift(A,C);
+        int a2=binaryShift(A,D);
+        int b1=binaryShift(B,C);
+        int b2=binaryShift(B,D);
         return Math.min(a1+b2,a2+b1);
     }
-   
+    public static int binaryShift(int temp,int a){
+        int ans=0;
+        while(temp>a){
+            temp>>=1;
+            ans++;
+        }
+        return ans;
+    }
 }
