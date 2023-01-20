@@ -28,12 +28,12 @@ class Solution {
         while(!queue.isEmpty()){
             int size=queue.size();
             Node prev=null;
-            while(size-->0){
+            while(size-->0 && queue.peek()!=null){
                 Node node=queue.poll();
-                if(node!=null && node.left!=null){
+                if(node.left!=null){
                     queue.add(node.left);
                 }
-                if(node!=null && node.right!=null){
+                if(node.right!=null){
                     queue.add(node.right);
                 }
                 if(prev==null){
@@ -43,6 +43,9 @@ class Solution {
                     prev.next=node;
                     prev=node;
                 }
+            }
+            if(queue.peek()==null){
+                queue.poll();
             }
         }
         return root;
