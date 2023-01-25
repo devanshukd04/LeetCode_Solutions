@@ -30,9 +30,23 @@ class Solution {
         // code here
         StringBuffer ans=new StringBuffer();
         int i=0;
-        int moves=0;
-        while(i<)
-        return helper(s,0,new StringBuffer(),true,0);
+        int moves=s.length();
+        int curr=0;
+        while(i<s.length()){
+            if(ans.length()>1 && (i+ans.length())<=s.length()){
+                String s1=ans.substring(0);
+                String s2=s.substring(i,i+ans.length());
+                if(s1.equals(s2)){
+                    moves=Math.min(moves,i+1+(s.length()-i-s1.length()));
+                }
+            }
+            else if(i+ans.length()>=s.length()){
+                break;
+            }
+            ans.append(s.charAt(i));
+            i++;
+        }
+        return moves;
     }
     public int helper(String s,int index,StringBuffer ans,boolean copy,int move){
         if(index>=s.length()){
