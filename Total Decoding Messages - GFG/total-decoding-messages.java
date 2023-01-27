@@ -66,7 +66,6 @@ class Solution
                 notTake=(notTake%mod+helper(str,dp,index+1,digit)%mod)%mod;
             }
         }
-        dp[index][prev+1]=(take+notTake)%((int)1e9+7);
-        return dp[index][prev+1];
+        return dp[index][prev+1]=(take+notTake)%((int)1e9+7);
     }
 }
