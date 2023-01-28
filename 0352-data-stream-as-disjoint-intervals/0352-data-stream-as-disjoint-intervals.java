@@ -1,11 +1,8 @@
 class SummaryRanges {
-    int[] arr;
     HashSet<Integer> set;
     HashMap<Integer,Integer> map;
     HashMap<Integer,Integer> map1;
     public SummaryRanges() {
-        this.arr=new int[(int)1e4+2];
-        Arrays.fill(this.arr,-1);
         this.map=new HashMap<Integer,Integer>();
         this.map1=new HashMap<Integer,Integer>();
         this.set=new HashSet<Integer>();
