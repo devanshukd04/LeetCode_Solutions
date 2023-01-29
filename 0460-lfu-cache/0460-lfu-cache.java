@@ -1,21 +1,29 @@
 class LFUCache {
-    HashMap<Integer,Integer> map;
-    HashMap<Integer,Integer> sequence;
-    HashMap<Integer,Integer> pair;
+    class Pair{
+        int key;
+        int frequency;
+        int lastCall;
+        int value;
+        Pair(int key,int frequency,int lastCall,int value){
+            this.key=key;
+            this.frequency=frequency;
+            this.lastCall=lastCall;
+            this.value=value;
+        }
+    }
+    HashMap<Integer,Pair> map;
     PriorityQueue<Integer> queue;
     int count;
     int capacity;
     public LFUCache(int capacity) {
-        this.map=new HashMap<Integer,Integer>();
-        this.sequence=new HashMap<Integer,Integer>();
-        this.pair=new HashMap<Integer,Integer>();
+        this.map=new HashMap<Integer,Pair>();
         this.queue=new PriorityQueue<Integer>(new Comparator<Integer>(){
             public int compare(Integer a,Integer b){
-                if(map.get(a)>map.get(b)){
+                if(map.get(a).frequency>map.get(b).frequency){
                     return 1;
                 }
-                else if(map.get(a)==map.get(b)){
-                    return sequence.get(a)-sequence.get(b);
+                else if(map.get(a).frequency==map.get(b).frequency){
+                    return map.get(a).lastCall-map.get(b).lastCall;
                 }
                 else{
                     return -1;
@@ -30,34 +38,34 @@ class LFUCache {
         if(!map.containsKey(key) || capacity==0){
             return -1;
         }
-        map.put(key,map.get(key)+1);
-        sequence.put(key,count);
+        Pair temp=map.get(key);
+        temp.lastCall=count++;
+        temp.frequency+=1;
         queue.remove(key);
         queue.add(key);
-        ++count;
-        return pair.get(key);
+        return temp.value;
     }
     
     public void put(int key, int value) {
         if(capacity==0){
             return;
         }
-        pair.put(key,value);
-        sequence.put(key,count);
         if(map.containsKey(key)){
-            map.put(key,map.get(key)+1);
+            Pair temp=map.get(key);
+            temp.lastCall=count;
+            temp.frequency+=1;
+            temp.value=value;
             queue.remove(key);
             queue.add(key);
             return;
         }
-        if(queue.size()==capacity){
-            int temp=queue.poll();
-            map.remove(temp);
-            pair.remove(temp);
-            sequence.remove(temp);
+        if(map.size()==capacity){
+            map.remove(queue.poll());
         }
-        map.put(key,1);
+        Pair pair=new Pair(key,1,count,value);
+        map.put(key,pair);
         queue.add(key);
+
         ++count;
     }
 }
