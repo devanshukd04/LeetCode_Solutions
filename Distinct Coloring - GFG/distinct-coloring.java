@@ -9,10 +9,9 @@ import java.util.*;
 //User function Template for Java
 
 class Solution{
-    static long[][] dp;
     public static long distinctColoring(int N, int[]r, int[]g, int[]b){
         //code here
-        dp=new long[N+1][3];
+        long[][] dp=new long[N+1][3];
         for(long[] arr:dp){
             Arrays.fill(arr,-1);
         }
@@ -26,27 +25,27 @@ class Solution{
         }
         return Math.min(dp[N][0],Math.min(dp[N][1],dp[N][2]));
     }
-    public static long helper(int N,int curr,int[] r,int[] g,int[] b,int prev){
-        if(curr>N){
-            return 0;
-        }
-        long ans=Long.MAX_VALUE;
-        if(dp[curr][prev+1]!=-1){
-            return dp[curr][prev+1];
-        }
-        for(int i=0;i<3;i++){
-            if(i==0 && prev!=i){
-                ans=Math.min(ans,r[curr-1]+helper(N,curr+1,r,g,b,i));      
-            }
-            else if(i==1 && prev!=i){
-                ans=Math.min(ans,g[curr-1]+helper(N,curr+1,r,g,b,i));   
-            }
-            else if(i==2 && prev!=i){
-                ans=Math.min(ans,b[curr-1]+helper(N,curr+1,r,g,b,i));   
-            }
-        }
-        return dp[curr][prev+1]=ans;
-    }
+    // public static long helper(int N,int curr,int[] r,int[] g,int[] b,int prev){
+    //     if(curr>N){
+    //         return 0;
+    //     }
+    //     long ans=Long.MAX_VALUE;
+    //     if(dp[curr][prev+1]!=-1){
+    //         return dp[curr][prev+1];
+    //     }
+    //     for(int i=0;i<3;i++){
+    //         if(i==0 && prev!=i){
+    //             ans=Math.min(ans,r[curr-1]+helper(N,curr+1,r,g,b,i));      
+    //         }
+    //         else if(i==1 && prev!=i){
+    //             ans=Math.min(ans,g[curr-1]+helper(N,curr+1,r,g,b,i));   
+    //         }
+    //         else if(i==2 && prev!=i){
+    //             ans=Math.min(ans,b[curr-1]+helper(N,curr+1,r,g,b,i));   
+    //         }
+    //     }
+    //     return dp[curr][prev+1]=ans;
+    // }
 }
 
 
