@@ -37,10 +37,10 @@ class Solution {
     static int mod=(int)1e9+7;
     static int[][] dp;
     static int uniquePaths(int n, int m, int[][] grid) {
+        // code here
         if(grid[n-1][m-1]==0){
             return 0;
         }
-        // code here
         dp=new int[grid.length][grid[0].length];
         for(int[] arr:dp){
             Arrays.fill(arr,-1);
