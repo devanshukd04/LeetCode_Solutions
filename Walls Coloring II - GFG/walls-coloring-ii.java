@@ -36,9 +36,6 @@ class Solution{
 	int minCost(int [][] costs) {
 		//Write your code here
 		this.dp=new int[costs.length][costs[0].length+1];
-// 		for(int[] arr:dp){
-// 		    Arrays.fill(arr,-1);
-// 		}
 		if(costs[0].length==1 && costs.length>1){
 		    return -1;
 		}
