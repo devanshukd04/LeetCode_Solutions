@@ -36,6 +36,9 @@ class Solution{
 	int minCost(int [][] costs) {
 		//Write your code here
 		this.dp=new int[costs.length][costs[0].length+1];
+// 		for(int[] arr:dp){
+// 		    Arrays.fill(arr,-1);
+// 		}
 		if(costs[0].length==1 && costs.length>1){
 		    return -1;
 		}
@@ -93,20 +96,20 @@ class Solution{
 		}
 		return ans;
 	}
-	public int helper(int[][] costs,int wall,int prev){
-	    if(wall==costs.length){
-	        return 0;
-	    }
-	    if(dp[wall][prev+1]!=-1){
-	        return dp[wall][prev+1];
-	    }
-	    int ans=Integer.MAX_VALUE;
-	    for(int i=0;i<costs[0].length;i++){
-	        if(i==prev){
-	            continue;
-	        }
-	        ans=Math.min(ans,costs[wall][i]+helper(costs,wall+1,i));
-	   }
-	    return dp[wall][prev+1]=ans;
-	}
+// 	public int helper(int[][] costs,int wall,int prev){
+// 	    if(wall==costs.length){
+// 	        return 0;
+// 	    }
+// 	    if(dp[wall][prev+1]!=-1){
+// 	        return dp[wall][prev+1];
+// 	    }
+// 	    int ans=Integer.MAX_VALUE;
+// 	    for(int i=0;i<costs[0].length;i++){
+// 	        if(i==prev){
+// 	            continue;
+// 	        }
+// 	        ans=Math.min(ans,costs[wall][i]+helper(costs,wall+1,i));
+// 	   }
+// 	    return dp[wall][prev+1]=ans;
+// 	}
 }
