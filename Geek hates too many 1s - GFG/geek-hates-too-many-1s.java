@@ -32,15 +32,10 @@ class Solution {
             list.add(n&1);
             n>>=1;
         }
-        for(int i=0;i<list.size()/2;i++){
-            int temp=list.get(i);
-            list.set(i,list.get(list.size()-1-i));
-            list.set(list.size()-1-i,temp);
-        }
         boolean flag=false;
         boolean flag1=false;
         int ans=0;
-        for(int i=0;i<list.size();i++){
+        for(int i=list.size()-1;i>=0;i--){
             int bit=list.get(i);
             if(!flag1 && !flag && bit==1){
                 flag=true;
