@@ -39,21 +39,15 @@ class GFG {
 class Solution {
     public int maxIntersections(int[][] lines, int N) {
         // Code here
-        List<Integer> list=new ArrayList<Integer>();
-        HashMap<Integer,Integer> map=new HashMap<Integer,Integer>();
+        TreeMap<Integer,Integer> map=new TreeMap<Integer,Integer>();
         for(int i=0;i<lines.length;i++){
             map.put(lines[i][0],map.getOrDefault(lines[i][0],0)+1);
             map.put(lines[i][1]+1,map.getOrDefault(lines[i][1]+1,0)-1);
         }
-        Set<Integer> set=map.keySet();
-        for(int num:set){
-            list.add(num);
-        }
-        Collections.sort(list);
         int ans=0;
         int temp=0;
-        for(int num:list){
-            temp+=map.get(num);
+        for(Map.Entry<Integer,Integer> entry:map.entrySet()){
+            temp+=entry.getValue();
             ans=ans<temp?temp:ans;
         }
         return ans;
