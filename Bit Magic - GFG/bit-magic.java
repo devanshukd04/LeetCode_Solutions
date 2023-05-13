@@ -64,7 +64,9 @@ class Solution {
                 ans++;
             }
         }
-        return ans/2+ans%2;
+        
+        ans=ans/2+ans%2;
+        return ans;
     }
 }
         
