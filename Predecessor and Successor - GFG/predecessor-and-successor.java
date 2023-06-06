@@ -124,8 +124,7 @@ public static void findPreSuc(Node root, int key)
        You need to update these both.
        And the data inside these classes will be printed automatically by the driver code. 
     */
-    minLE(root,key);
-    maxLE(root,key);
+    helper(root,key);
     return;
 }
     public static void minLE(Node root,int key){
@@ -164,5 +163,32 @@ public static void findPreSuc(Node root, int key)
             maxLE(root.right,key);
             return;
         }
+    }
+    public static void helper(Node root,int key){
+        if(root==null){
+            return;
+        }
+        if(pre==null){
+            if(root.data<key){
+                pre=root;
+            }
+        }
+        else{
+            if(root.data<key){
+                pre=root.data>pre.data?root:pre;
+            }
+        }
+        if(suc==null){
+            if(root.data>key){
+                suc=root;
+            }
+        }
+        else{
+            if(root.data>key){
+                suc=root.data>suc.data?suc:root;
+            }
+        }
+        helper(root.left,key);
+        helper(root.right,key);
     }
 }
