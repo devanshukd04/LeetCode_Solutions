@@ -49,12 +49,11 @@ class Solution
     static void arrange(long arr[], int n)
     {
         // your code here
-        HashMap<Long,Long> map=new HashMap<Long,Long>();
         for(int i=0;i<n;i++){
-            map.put(Long.valueOf(i),arr[i]);
+            arr[i]+=(arr[(int)arr[i]]%n)*n;
         }
         for(int i=0;i<n;i++){
-            arr[i]=map.get(map.get(Long.valueOf(i)));
+            arr[i]=arr[i]/n;
         }
     }
 }
