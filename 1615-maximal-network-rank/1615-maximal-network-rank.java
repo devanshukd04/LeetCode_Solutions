@@ -1,6 +1,6 @@
 class Solution {
     public int maximalNetworkRank(int n, int[][] roads) {
-        Map<Integer,HashSet<Integer>> map=new HashMap<Integer,HashSet<Integer>>();
+        Map<Integer,Set<Integer>> map=new HashMap<>();
         int ans=0;
         int[] count=new int[n];
         for(int i=0;i<roads.length;i++){
@@ -18,14 +18,12 @@ class Solution {
             count[pointB]++;
         }
         for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                if(i!=j){
-                    if(map.containsKey(i) && map.get(i).contains(j)){
-                        ans=Math.max(ans,count[i]+count[j]-1);
-                    }
-                    else{
-                        ans=Math.max(ans,count[i]+count[j]);
-                    }
+            for(int j=i+1;j<n;j++){
+                if(map.containsKey(i) && map.get(i).contains(j)){
+                    ans=Math.max(ans,count[i]+count[j]-1);
+                }
+                else{
+                    ans=Math.max(ans,count[i]+count[j]);
                 }
             }
         }
