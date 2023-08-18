@@ -3,19 +3,11 @@ class Solution {
         Map<Integer,Set<Integer>> map=new HashMap<>();
         int ans=0;
         int[] count=new int[n];
-        for(int i=0;i<roads.length;i++){
-            int pointA=roads[i][0];
-            int pointB=roads[i][1];
-            if(!map.containsKey(pointA)){
-                map.put(pointA,new HashSet<Integer>());
-            }
-            if(!map.containsKey(pointB)){
-                map.put(pointB,new HashSet<Integer>());
-            }
-            map.get(pointA).add(pointB);
-            map.get(pointB).add(pointA);
-            count[pointA]++;
-            count[pointB]++;
+        for(int[] road:roads){
+            map.computeIfAbsent(road[0],k->new HashSet<>()).add(road[1]);
+            map.computeIfAbsent(road[1],k->new HashSet<>()).add(road[0]);
+            count[road[0]]++;
+            count[road[1]]++;
         }
         for(int i=0;i<n;i++){
             for(int j=i+1;j<n;j++){
