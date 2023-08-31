@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/solution/">1326. Minimum Number of Taps to Open to Water a Garden</a></h2><h3>Hard</h3><hr><div><p>There is a one-dimensional garden on the x-axis. The garden starts at the point <code>0</code> and ends at the point <code>n</code>. (i.e The length of the garden is <code>n</code>).</p>
+<h2><a href="https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/">1326. Minimum Number of Taps to Open to Water a Garden</a></h2><h3>Hard</h3><hr><div><p>There is a one-dimensional garden on the x-axis. The garden starts at the point <code>0</code> and ends at the point <code>n</code>. (i.e The length of the garden is <code>n</code>).</p>
 
 <p>There are <code>n + 1</code> taps located at points <code>[0, 1, ..., n]</code> in the garden.</p>
 
