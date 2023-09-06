@@ -22,23 +22,20 @@ class Solution {
         temp=head;
         ListNode prev=temp;
         for(int i=0;i<k;i++){
-            if(temp==null){
-                ans[i]=null;
+            int prevSize=partSize;
+            ans[i]=temp;
+            while(temp!=null && prevSize>0){
+                prev=temp;
+                temp=temp.next;
+                prevSize--;
             }
-            else{
-                int prevSize=partSize;
-                ans[i]=temp;
-                while(temp!=null && prevSize>0){
-                    prev=temp;
-                    temp=temp.next;
-                    prevSize--;
-                }
-                if(extra>0){
-                    extra--;
-                    prev=temp;
-                    temp=temp.next;
-                }
-                prev.next=null;
+            if(extra>0){
+                extra--;
+                prev=temp;
+                temp=temp.next;
+            }
+            if(prev!=null){
+                prev.next=null;   
             }
         }
         return ans;
