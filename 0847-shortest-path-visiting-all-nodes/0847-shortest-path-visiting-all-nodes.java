@@ -33,10 +33,11 @@ class Solution {
                 int targetMask=(1<<targetVertex);
                 int destMask=node.mask | targetMask;
                 
-                if(visited.contains(new Pair<>(targetVertex,destMask))){
+                Pair<Integer,Integer> pair=new Pair<>(targetVertex,destMask);
+                if(visited.contains(pair)){
                     continue;
                 }
-                visited.add(new Pair<>(targetVertex,destMask));
+                visited.add(pair);
                 queue.add(new Node(targetVertex,destMask,node.cost+1));
             }
         }
