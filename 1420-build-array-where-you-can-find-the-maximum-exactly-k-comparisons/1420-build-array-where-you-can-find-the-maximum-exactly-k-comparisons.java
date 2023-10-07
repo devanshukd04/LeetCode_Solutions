@@ -16,11 +16,11 @@ class Solution {
         return helper(dp,0,0,0);
     }
     public int helper(int[][][] dp, int size, int max, int currCost){
-        if(size>this.maxSize || currCost>this.cost){
+        if(size>maxSize || currCost>cost){
             return 0;
         }
-        if(size==this.maxSize){
-            if(currCost==this.cost){
+        if(size==maxSize){
+            if(currCost==cost){
                 return 1;
             }
             return 0;
@@ -30,12 +30,12 @@ class Solution {
         }
         
         int ans=0;
-        for(int i=1;i<=this.maxAllowed;i++){
+        for(int i=1;i<=maxAllowed;i++){
             if(i<=max){
-                ans=(ans+helper(dp,size+1,max,currCost))%this.mod;
+                ans=(ans+helper(dp,size+1,max,currCost))%mod;
             }
             else{
-                ans=(ans+helper(dp,size+1,i,currCost+1))%this.mod;
+                ans=(ans+helper(dp,size+1,i,currCost+1))%mod;
             }
         }
         return dp[size][max][currCost]=ans;
