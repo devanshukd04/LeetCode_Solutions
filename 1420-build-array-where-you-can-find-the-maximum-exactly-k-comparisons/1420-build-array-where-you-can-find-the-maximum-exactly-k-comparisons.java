@@ -1,37 +1,43 @@
 class Solution {
     int mod=(int)1e9+7;
+    int maxSize;
+    int cost;
+    int maxAllowed;
     public int numOfArrays(int n, int m, int k) {
-        int[][][] dp=new int[n+1][k+1][m+1];
+        int[][][] dp=new int[n+1][m+1][k+1];
         for(int[][] arr1:dp){
             for(int[] arr2:arr1){
                 Arrays.fill(arr2,-1);
             }
         }
-        return helper(dp,n,k,m,0,0,0);
+        this.maxSize=n;
+        this.maxAllowed=m;
+        this.cost=k;
+        return helper(dp,0,0,0);
     }
-    public int helper(int[][][] dp, int maxSize, int cost, int maxAllowed, int size, int currCost, int max){
-        if(size>maxSize || currCost>cost){
+    public int helper(int[][][] dp, int size, int max, int currCost){
+        if(size>this.maxSize || currCost>this.cost){
             return 0;
         }
-        if(size==maxSize){
-            if(currCost==cost){
+        if(size==this.maxSize){
+            if(currCost==this.cost){
                 return 1;
             }
             return 0;
         }
-        if(dp[size][currCost][max]!=-1){
-            return dp[size][currCost][max];
+        if(dp[size][max][currCost]!=-1){
+            return dp[size][max][currCost];
         }
         
         int ans=0;
-        for(int i=1;i<=maxAllowed;i++){
+        for(int i=1;i<=this.maxAllowed;i++){
             if(i<=max){
-                ans=(ans+helper(dp,maxSize,cost,maxAllowed,size+1,currCost,max))%this.mod;
+                ans=(ans+helper(dp,size+1,max,currCost))%this.mod;
             }
             else{
-                ans=(ans+helper(dp,maxSize,cost,maxAllowed,size+1,currCost+1,i))%this.mod;
+                ans=(ans+helper(dp,size+1,i,currCost+1))%this.mod;
             }
         }
-        return dp[size][currCost][max]=ans;
+        return dp[size][max][currCost]=ans;
     }
 }
