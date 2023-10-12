@@ -125,7 +125,7 @@ class Solution {
         Map<String,Integer> map=new HashMap<>();
         helper(map,root);
         for(String key:map.keySet()){
-            if(key.length()>1 && map.get(key)>1){
+            if(key.length()>3 && map.get(key)>1){
                 return 1;
             }
         }
@@ -140,7 +140,9 @@ class Solution {
         StringBuffer leftTree=helper(map,root.left);
         StringBuffer rightTree=helper(map,root.right);
         
+        leftTree.append('/');
         leftTree.append(root.data);
+        leftTree.append('/');
         leftTree.append(rightTree);
         
         String subTree=leftTree.toString();
