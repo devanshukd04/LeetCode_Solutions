@@ -120,36 +120,32 @@ class Node
  */
 
 class Solution {
-    boolean ans=false;
     int dupSub(Node root) {
         // code here 
-        Set<String> set=new HashSet<>();
-        helper(set,root);
-        return ans?1:0;
+        Map<String,Integer> map=new HashMap<>();
+        helper(map,root);
+        for(String key:map.keySet()){
+            if(key.length()>1 && map.get(key)>1){
+                return 1;
+            }
+        }
+        
+        return 0;
     }
-    public StringBuffer helper(Set<String> set, Node root){
+    public StringBuffer helper(Map<String,Integer> map, Node root){
         if(root==null){
             return new StringBuffer();
         }
-        StringBuffer tree=new StringBuffer();
         
-        if(!ans){
-            StringBuffer leftTree=helper(set,root.left);
-            StringBuffer rightTree=helper(set,root.right);
-            
-            tree.append(leftTree);
-            tree.append(root.data);
-            tree.append(rightTree);
-            
-            if(set.contains(tree.toString())){
-                ans=true;
-            }
-            if(leftTree.length()>0 || rightTree.length()>0){
-                set.add(tree.toString());
-            }
-        }        
+        StringBuffer leftTree=helper(map,root.left);
+        StringBuffer rightTree=helper(map,root.right);
         
+        leftTree.append(root.data);
+        leftTree.append(rightTree);
         
-        return tree;
+        String subTree=leftTree.toString();
+        map.put(subTree,map.getOrDefault(subTree,0)+1);
+        
+        return leftTree;
     }
 }
