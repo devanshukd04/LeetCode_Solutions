@@ -18,13 +18,13 @@ class Solution {
     public int peakIndexFinder(MountainArray mountainArr, int start, int end){
         
         int ans=0;
-        while(start!=end){
+        while(start<=end){
             int mid=start+(end-start)/2;
             if(mountainArr.get(mid)<mountainArr.get(mid+1)){
                 start=mid+1;
             }
             else{
-                end=mid;
+                end=mid-1;
             }
         }
         return start;
