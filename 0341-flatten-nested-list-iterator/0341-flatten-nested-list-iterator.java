@@ -18,6 +18,7 @@
 public class NestedIterator implements Iterator<Integer> {
     private List<Integer> resList;
     private int index; 
+    int length;
     
     public NestedIterator(List<NestedInteger> nestedList) {
         resList=flattenNestedList(nestedList);
@@ -35,6 +36,7 @@ public class NestedIterator implements Iterator<Integer> {
                 list.addAll(flattenNestedList(element.getList()));
             }
         }
+        this.length=list.size();
         return list;
     }
 
@@ -45,7 +47,7 @@ public class NestedIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        return index<resList.size();   
+        return index<length;   
     }
 }
 
