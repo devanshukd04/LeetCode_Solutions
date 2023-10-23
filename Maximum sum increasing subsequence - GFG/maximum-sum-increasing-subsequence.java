@@ -43,8 +43,8 @@ class Solution
 	        return 0;
 	    }
 	    
-	    if(dp[currIndex][prevIndex+1]!=-1){
-	        return dp[currIndex+][prevIndex+1];
+	    if(dp[currIndex+1][prevIndex+1]!=-1){
+	        return dp[currIndex+1][prevIndex+1];
 	    }
 	    
 	    int take=0;
@@ -52,6 +52,6 @@ class Solution
 	    if(prevIndex==-1 || arr[prevIndex]<arr[currIndex]){
 	        take=arr[currIndex]+helper(dp,arr,currIndex+1,currIndex);
 	    }
-	    return dp[currIndex][prevIndex+1]=Math.max(take,notTake);
+	    return dp[currIndex+1][prevIndex+1]=Math.max(take,notTake);
 	}
 }
