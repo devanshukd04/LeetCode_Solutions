@@ -19,10 +19,10 @@ class Solution {
         Queue<TreeNode> queue=new LinkedList<>();
         
         queue.add(root);
-        queue.add(null);
         while(!queue.isEmpty() && queue.peek()!=null){
             int levelMax=Integer.MIN_VALUE;
-            while(queue.peek()!=null){
+            int length=queue.size();
+            while(length-->0){
                 TreeNode node=queue.poll();
                 levelMax=Math.max(levelMax,node.val);
                 if(node.left!=null){
@@ -33,9 +33,8 @@ class Solution {
                 }
             }
             ans.add(levelMax);
-            queue.poll();
-            queue.add(null);
         }
+        
         return ans;
     }
 }
