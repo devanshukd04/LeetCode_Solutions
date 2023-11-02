@@ -31,20 +31,22 @@ class Solution {
         return ans;
     }
     
-    public Node helper(TreeNode root){
+    public Pair<Integer,Integer> helper(TreeNode root){
         if(root==null){
-            return new Node(0,0);
+            return new Pair(0,0);
         }
-        Node left=helper(root.left);
-        Node right=helper(root.right);
+        Pair<Integer,Integer> left=helper(root.left);
+        Pair<Integer,Integer> right=helper(root.right);
         
-        int avg=(left.sum+right.sum+root.val)/(left.count+right.count+1);
+        int avg=(left.getKey()+right.getKey()+root.val)/(left.getValue()+right.getValue()+1);
         
-        if(avg==root.val){
+        int nodeSum=left.getKey()+right.getKey()+root.val;
+        int nodeCount=left.getValue()+right.getValue()+1;
+        
+        if(nodeSum/nodeCount==root.val){
             ans++;
         }
-        left.sum+=right.sum+root.val;
-        left.count+=right.count+1;
-        return left;
+        
+        return new Pair(nodeSum,nodeCount);
     }
 }
