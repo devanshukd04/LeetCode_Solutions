@@ -17,24 +17,22 @@ class Solution {
         TreeMap<Integer,Long> map=new TreeMap<Integer,Long>();
         
         for(int i=0;i<updatedNums.length;i++){
+            
             int num=updatedNums[i];
             Integer firstSmallerKey=map.floorKey(num);
-            if(firstSmallerKey==null){
-                map.put(num,(long)nums[i]);
-            }
-            else{
-                map.put(num,Math.max(map.get(firstSmallerKey),0)+(long)nums[i]);
-                
-                while(map.ceilingKey(num+1)!=null){
-                    Integer firstBiggerKey=map.ceilingKey(num+1);
-                    if(map.get(firstBiggerKey)<map.get(num)){
-                        map.remove(firstBiggerKey);
-                    }
-                    else{
-                        break;
-                    }
+            
+            map.put(num,Math.max(map.getOrDefault(firstSmallerKey!=null?firstSmallerKey:num,(long)0),0)+nums[i]);
+            
+            while(map.ceilingKey(num+1)!=null){
+                Integer firstBiggerKey=map.ceilingKey(num+1);
+                if(map.get(firstBiggerKey)<map.get(num)){
+                    map.remove(firstBiggerKey);
+                }
+                else{
+                    break;
                 }
             }
+        
             ans=Math.max(ans,map.get(num));
         }
         
